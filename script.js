@@ -44,6 +44,16 @@ const CATEGORIES = {
       'IMG_6228.JPEG', 'IMG_6226.JPG', 'IMG_6229.JPEG',
     ],
   },
+  installations: {
+    dir: 'images/FLORAL_INSTALLATION/',
+    files: [
+      'IMG_3932.JPG', 'IMG_5051.JPG', 'IMG_6230.JPEG', 'IMG_5856.JPEG',
+      'IMG_3933.JPG', 'IMG_5064.JPG', 'IMG_6231.JPEG', 'IMG_5108.JPG',
+      'IMG_3936.JPG', 'IMG_5077.JPG', 'IMG_6232.JPEG', 'IMG_5857.JPEG',
+      'IMG_3952.JPG', 'IMG_5296.JPG', 'IMG_6233.JPEG', 'IMG_5054.JPG',
+      'IMG_6234.JPEG',
+    ],
+  },
 };
 
 // Interleave categories so the "All" view mixes them instead of grouping
