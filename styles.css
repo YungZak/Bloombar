@@ -688,6 +688,8 @@ section[id] { scroll-margin-top: 72px; }
   .about, .alacarte-intro { grid-template-columns: 1fr; }
   /* full-bleed photo: stretch past the section padding to the screen edges */
   .about-media, .alacarte-media { width: 100vw; margin-left: calc(50% - 50vw); }
+  /* text first, photo after — otherwise the photo sits flush under the hero */
+  .about-media { order: 2; }
   .about-body h2 { max-width: none; }
 
   .check-grid { gap: .8rem; }
