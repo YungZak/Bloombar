@@ -54,6 +54,21 @@ const CATEGORIES = {
       'IMG_6234.JPEG',
     ],
   },
+  'bud-vases': {
+    dir: 'images/Bud_vases_Ikebana/',
+    files: [
+      'IMG_5762.JPG', 'IMG_6143.JPEG', 'IMG_6145.JPEG', 'IMG_6235.JPEG',
+      'IMG_6236.JPEG', 'IMG_6254.JPG', 'IMG_6255.JPG', 'IMG_6256.JPG',
+      'IMG_6257.JPG', 'IMG_6261.JPG', 'IMG_6262.JPG', 'IMG_6263.JPG',
+    ],
+  },
+  'candle-decor': {
+    dir: 'images/Candle_Decor/',
+    files: [
+      'IMG_5691.JPEG', 'IMG_6251.JPG', 'IMG_6252.JPG', 'IMG_6253.JPG',
+      'IMG_6258.JPG', 'IMG_6260.JPG',
+    ],
+  },
 };
 
 // Interleave categories so the "All" view mixes them instead of grouping
