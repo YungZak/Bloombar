@@ -71,6 +71,75 @@ const CATEGORIES = {
   },
 };
 
+// Pixel size of every thumbnail, so the browser reserves the exact space
+// before images load and the grid never jumps. Optional per photo: a missing
+// entry just means that tile sizes itself after its image loads.
+// Regenerate a line with: sips -g pixelWidth -g pixelHeight <thumb>
+const THUMB_SIZES = {
+  'images/Full_service_wedding/thumbs/IMG_2843.JPG': [640, 853],
+  'images/Full_service_wedding/thumbs/IMG_2848.JPG': [640, 853],
+  'images/Full_service_wedding/thumbs/IMG_2874.JPG': [640, 853],
+  'images/Full_service_wedding/thumbs/IMG_2877.JPG': [640, 853],
+  'images/Full_service_wedding/thumbs/IMG_5688.JPEG': [640, 853],
+  'images/Full_service_wedding/thumbs/IMG_5690.JPEG': [640, 853],
+  'images/Full_service_wedding/thumbs/IMG_5698.JPEG': [640, 853],
+  'images/Full_service_wedding/thumbs/IMG_5703.JPEG': [640, 853],
+  'images/Full_service_wedding/thumbs/IMG_5704.JPEG': [640, 853],
+  'images/Full_service_wedding/thumbs/IMG_5705.JPEG': [640, 853],
+  'images/Full_service_wedding/thumbs/IMG_5709.JPEG': [640, 852],
+  'images/Full_service_wedding/thumbs/IMG_5710.JPEG': [640, 853],
+  'images/Full_service_wedding/thumbs/IMG_5712.JPEG': [640, 853],
+  'images/Full_service_wedding/thumbs/IMG_5713.JPEG': [640, 800],
+  'images/Full_service_wedding/thumbs/IMG_5739.JPG': [640, 959],
+  'images/Full_service_wedding/thumbs/IMG_5740.JPG': [640, 961],
+  'images/Full_service_wedding/thumbs/IMG_5741.JPG': [640, 959],
+  'images/Full_service_wedding/thumbs/IMG_5744.JPG': [640, 961],
+  'images/Full_service_wedding/thumbs/IMG_5745.JPG': [640, 959],
+  'images/Full_service_wedding/thumbs/IMG_5746.JPG': [640, 961],
+  'images/A_LA_CARTE/thumbs/IMG_6222.JPG': [640, 853],
+  'images/A_LA_CARTE/thumbs/IMG_6223.JPEG': [640, 853],
+  'images/A_LA_CARTE/thumbs/IMG_6225.JPG': [640, 870],
+  'images/A_LA_CARTE/thumbs/IMG_6226.JPG': [640, 853],
+  'images/A_LA_CARTE/thumbs/IMG_6227.JPG': [640, 959],
+  'images/A_LA_CARTE/thumbs/IMG_6228.JPEG': [640, 853],
+  'images/A_LA_CARTE/thumbs/IMG_6229.JPEG': [640, 853],
+  'images/FLORAL_INSTALLATION/thumbs/IMG_3932.JPG': [640, 853],
+  'images/FLORAL_INSTALLATION/thumbs/IMG_3933.JPG': [640, 853],
+  'images/FLORAL_INSTALLATION/thumbs/IMG_3936.JPG': [640, 853],
+  'images/FLORAL_INSTALLATION/thumbs/IMG_3952.JPG': [640, 853],
+  'images/FLORAL_INSTALLATION/thumbs/IMG_5051.JPG': [640, 853],
+  'images/FLORAL_INSTALLATION/thumbs/IMG_5054.JPG': [640, 853],
+  'images/FLORAL_INSTALLATION/thumbs/IMG_5064.JPG': [640, 853],
+  'images/FLORAL_INSTALLATION/thumbs/IMG_5077.JPG': [640, 853],
+  'images/FLORAL_INSTALLATION/thumbs/IMG_5108.JPG': [640, 853],
+  'images/FLORAL_INSTALLATION/thumbs/IMG_5296.JPG': [640, 853],
+  'images/FLORAL_INSTALLATION/thumbs/IMG_5856.JPEG': [640, 799],
+  'images/FLORAL_INSTALLATION/thumbs/IMG_5857.JPEG': [640, 799],
+  'images/FLORAL_INSTALLATION/thumbs/IMG_6230.JPEG': [640, 800],
+  'images/FLORAL_INSTALLATION/thumbs/IMG_6231.JPEG': [640, 800],
+  'images/FLORAL_INSTALLATION/thumbs/IMG_6232.JPEG': [640, 828],
+  'images/FLORAL_INSTALLATION/thumbs/IMG_6233.JPEG': [640, 828],
+  'images/FLORAL_INSTALLATION/thumbs/IMG_6234.JPEG': [640, 829],
+  'images/Bud_vases_Ikebana/thumbs/IMG_5762.JPG': [640, 959],
+  'images/Bud_vases_Ikebana/thumbs/IMG_6143.JPEG': [640, 853],
+  'images/Bud_vases_Ikebana/thumbs/IMG_6145.JPEG': [640, 853],
+  'images/Bud_vases_Ikebana/thumbs/IMG_6235.JPEG': [640, 853],
+  'images/Bud_vases_Ikebana/thumbs/IMG_6236.JPEG': [640, 853],
+  'images/Bud_vases_Ikebana/thumbs/IMG_6254.JPG': [640, 960],
+  'images/Bud_vases_Ikebana/thumbs/IMG_6255.JPG': [640, 800],
+  'images/Bud_vases_Ikebana/thumbs/IMG_6256.JPG': [640, 960],
+  'images/Bud_vases_Ikebana/thumbs/IMG_6257.JPG': [640, 849],
+  'images/Bud_vases_Ikebana/thumbs/IMG_6261.JPG': [640, 799],
+  'images/Bud_vases_Ikebana/thumbs/IMG_6262.JPG': [640, 959],
+  'images/Bud_vases_Ikebana/thumbs/IMG_6263.JPG': [640, 960],
+  'images/Candle_Decor/thumbs/IMG_5691.JPEG': [640, 853],
+  'images/Candle_Decor/thumbs/IMG_6251.JPG': [640, 960],
+  'images/Candle_Decor/thumbs/IMG_6252.JPG': [640, 959],
+  'images/Candle_Decor/thumbs/IMG_6253.JPG': [640, 767],
+  'images/Candle_Decor/thumbs/IMG_6258.JPG': [640, 717],
+  'images/Candle_Decor/thumbs/IMG_6260.JPG': [640, 960],
+};
+
 // Interleave categories so the "All" view mixes them instead of grouping
 const photoLists = Object.entries(CATEGORIES).map(([cat, { dir, files }]) =>
   files.map((file) => ({
@@ -88,24 +157,79 @@ for (let i = 0; photoLists.some((list) => i < list.length); i++) {
 
 const masonry = document.getElementById('masonry');
 const filterBar = document.getElementById('portfolioFilter');
+const loadMoreBtn = document.getElementById('loadMore');
+const PAGE_SIZE = 12; // 4 rows of 3 on desktop, 6 rows of 2 on mobile
+const mobileLayout = window.matchMedia('(max-width: 820px)');
 let visiblePhotos = [];
+let shownCount = 0;
+// The grid is built from real column elements (not CSS columns) so that
+// "Load More" only appends tiles — photos already on screen never move.
+let columns = [];
+let colHeights = [];
 
-function renderPortfolio(filter) {
-  visiblePhotos = PHOTOS.filter((p) => filter === 'all' || p.cat === filter);
+function setupColumns() {
   masonry.innerHTML = '';
-  visiblePhotos.forEach((photo, i) => {
+  columns = [];
+  colHeights = [];
+  const count = mobileLayout.matches ? 2 : 3;
+  for (let c = 0; c < count; c++) {
+    const col = document.createElement('div');
+    col.className = 'masonry-col';
+    masonry.appendChild(col);
+    columns.push(col);
+    colHeights.push(0);
+  }
+}
+
+function appendTiles(count) {
+  visiblePhotos.slice(shownCount, shownCount + count).forEach((photo, j) => {
+    const i = shownCount + j;
     const tile = document.createElement('button');
     tile.className = 'tile';
     tile.setAttribute('aria-label', 'Open photo ' + (i + 1) + ' in full screen');
     const img = document.createElement('img');
+    const size = THUMB_SIZES[photo.thumb];
+    if (size) {
+      img.width = size[0];
+      img.height = size[1];
+    }
     img.src = photo.thumb;
     img.alt = 'Bloombar Weddings — wedding floral design';
     img.loading = 'lazy';
+    // Fade the photo in over the placeholder tile once it has loaded
+    if (img.complete) {
+      img.classList.add('is-loaded');
+    } else {
+      img.addEventListener('load', () => img.classList.add('is-loaded'), { once: true });
+    }
     tile.appendChild(img);
     tile.addEventListener('click', () => openLightbox(i));
-    masonry.appendChild(tile);
+    // drop the tile into the currently shortest column
+    const c = colHeights.indexOf(Math.min(...colHeights));
+    columns[c].appendChild(tile);
+    colHeights[c] += size ? size[1] / size[0] : 4 / 3;
   });
+  shownCount = Math.min(shownCount + count, visiblePhotos.length);
+  if (loadMoreBtn) loadMoreBtn.hidden = shownCount >= visiblePhotos.length;
 }
+
+function renderPortfolio(filter) {
+  visiblePhotos = PHOTOS.filter((p) => filter === 'all' || p.cat === filter);
+  shownCount = 0;
+  setupColumns();
+  appendTiles(PAGE_SIZE);
+}
+
+if (loadMoreBtn) loadMoreBtn.addEventListener('click', () => appendTiles(PAGE_SIZE));
+
+// Rebuild the columns when crossing the 2 ⇄ 3 column breakpoint,
+// keeping however many photos were already shown
+mobileLayout.addEventListener('change', () => {
+  const keep = shownCount;
+  shownCount = 0;
+  setupColumns();
+  appendTiles(keep);
+});
 
 if (filterBar) {
   filterBar.addEventListener('click', (e) => {

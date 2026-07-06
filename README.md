@@ -6,7 +6,7 @@
 
 ## Что заменить перед запуском
 
-- **Телефон**: `+1 (323) 000-0000` — плейсхолдер, встречается в hero и в секции `#contact` (ссылки `tel:+13230000000`).
+- **Телефон**: `+1 (747) 366-0483` — актуальный (hero и секция `#contact`, ссылки `tel:+17473660483`).
 - **Email**: `hello@bloombarweddings.com` — в hero, форме (`action`) и контактах.
 - **Instagram**: `@bloombarweddings` / `https://instagram.com/bloombarweddings` — в hero и контактах.
 - **Форма**: сейчас работает через `mailto:`. Для нормального приёма заявок подключите [Formspree](https://formspree.io) — замените `action` формы на их endpoint.
