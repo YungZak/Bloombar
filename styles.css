@@ -469,6 +469,7 @@ section[id] { scroll-margin-top: 72px; }
 .masonry-col { flex: 1 1 0; min-width: 0; position: relative; }
 .tile {
   display: block;
+  position: relative;
   width: 100%;
   margin-bottom: 1rem;
   border: none;
@@ -477,8 +478,27 @@ section[id] { scroll-margin-top: 72px; }
   cursor: zoom-in;
   overflow: hidden;
 }
+/* brand flower watermark, gently pulsing while the photo loads */
+.tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("images/logo-flower.png") center / clamp(64px, 42%, 110px) no-repeat;
+  /* the logo art is white — darken it so it reads on the tinted placeholder */
+  filter: brightness(.3);
+  animation: logo-pulse 2.2s ease-in-out infinite;
+}
+.tile:has(img.is-loaded)::before { animation: none; opacity: 0; }
+@keyframes logo-pulse {
+  0%, 100% { opacity: .3; }
+  50% { opacity: .6; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tile::before { animation: none; opacity: .6; }
+}
 .tile img {
   display: block;
+  position: relative; /* paints above the ::before watermark */
   width: 100%;
   height: auto;
   /* invisible until loaded — the tile's tinted background acts as a placeholder */
