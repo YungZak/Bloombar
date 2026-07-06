@@ -181,6 +181,53 @@ function setupColumns() {
   }
 }
 
+// A few small petals drift up and away as photos appear or the menu is used
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+function makePetal(x, y, parent, fixed) {
+  const petal = document.createElement('span');
+  petal.className = 'petal petal-' + (1 + Math.floor(Math.random() * 3)) + (fixed ? ' petal-fixed' : '');
+  petal.style.left = x + 'px';
+  petal.style.top = y + 'px';
+  petal.style.setProperty('--dx', (Math.random() * 90 - 45).toFixed(0) + 'px');
+  petal.style.setProperty('--dy', (-30 - Math.random() * 60).toFixed(0) + 'px');
+  petal.style.setProperty('--rot', (Math.random() * 240 - 120).toFixed(0) + 'deg');
+  petal.style.animationDelay = (Math.random() * 0.3).toFixed(2) + 's';
+  petal.addEventListener('animationend', () => petal.remove(), { once: true });
+  parent.appendChild(petal);
+}
+
+function spawnPetals(tile) {
+  if (reducedMotion.matches) return;
+  for (let k = 0; k < 4; k++) {
+    makePetal(
+      tile.offsetLeft + Math.random() * tile.offsetWidth,
+      tile.offsetTop + Math.random() * tile.offsetHeight * 0.7,
+      tile.parentNode,
+      false
+    );
+  }
+}
+
+// A light handful of petals floats across the upper screen after
+// navigating to a section through the menu
+function spawnNavPetals() {
+  if (reducedMotion.matches) return;
+  for (let k = 0; k < 7; k++) {
+    makePetal(
+      Math.random() * window.innerWidth,
+      window.innerHeight * (0.12 + Math.random() * 0.4),
+      document.body,
+      true
+    );
+  }
+}
+
+document.querySelectorAll('.main-nav a[href^="#"], .footer-nav a[href^="#"]').forEach((a) => {
+  // let the smooth scroll mostly arrive before releasing the petals
+  a.addEventListener('click', () => setTimeout(spawnNavPetals, 650));
+});
+
 function appendTiles(count) {
   visiblePhotos.slice(shownCount, shownCount + count).forEach((photo, j) => {
     const i = shownCount + j;
@@ -196,18 +243,23 @@ function appendTiles(count) {
     img.src = photo.thumb;
     img.alt = 'Bloombar Weddings — wedding floral design';
     img.loading = 'lazy';
-    // Fade the photo in over the placeholder tile once it has loaded
-    if (img.complete) {
-      img.classList.add('is-loaded');
-    } else {
-      img.addEventListener('load', () => img.classList.add('is-loaded'), { once: true });
-    }
     tile.appendChild(img);
     tile.addEventListener('click', () => openLightbox(i));
     // drop the tile into the currently shortest column
     const c = colHeights.indexOf(Math.min(...colHeights));
     columns[c].appendChild(tile);
     colHeights[c] += size ? size[1] / size[0] : 4 / 3;
+    // Fade the photo in over the placeholder tile once it has loaded,
+    // releasing a few petals as it appears
+    const reveal = () => {
+      img.classList.add('is-loaded');
+      spawnPetals(tile);
+    };
+    if (img.complete) {
+      reveal();
+    } else {
+      img.addEventListener('load', reveal, { once: true });
+    }
   });
   shownCount = Math.min(shownCount + count, visiblePhotos.length);
   if (loadMoreBtn) loadMoreBtn.hidden = shownCount >= visiblePhotos.length;

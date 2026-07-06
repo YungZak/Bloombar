@@ -466,7 +466,7 @@ section[id] { scroll-margin-top: 72px; }
   max-width: 1200px;
   margin: 0 auto;
 }
-.masonry-col { flex: 1 1 0; min-width: 0; }
+.masonry-col { flex: 1 1 0; min-width: 0; position: relative; }
 .tile {
   display: block;
   width: 100%;
@@ -486,6 +486,28 @@ section[id] { scroll-margin-top: 72px; }
   transition: transform .5s ease, opacity .5s ease;
 }
 .tile img.is-loaded { opacity: 1; }
+
+/* Tiny petals that drift away as each photo appears */
+.petal {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 85% 0 85% 0; /* leaf / petal silhouette */
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+  animation: petal-fly 1.4s ease-out forwards;
+}
+.petal-1 { background: rgba(205, 170, 160, .9); }                            /* dusty blush */
+.petal-2 { background: rgba(206, 199, 162, .95); width: 9px; height: 9px; }  /* olive cream */
+.petal-3 { background: rgba(122, 134, 95, .75); width: 10px; height: 10px; } /* olive */
+/* petals released on menu navigation float over the whole screen */
+.petal-fixed { position: fixed; z-index: 90; }
+@keyframes petal-fly {
+  0% { opacity: 0; transform: translate(0, 0) rotate(0deg) }
+  18% { opacity: .9; }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(var(--rot)); }
+}
 .tile:hover img { transform: scale(1.04); }
 
 .load-more { text-align: center; margin-top: clamp(2rem, 4vw, 3rem); }
